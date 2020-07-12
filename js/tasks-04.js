@@ -1,10 +1,14 @@
-import users from './users.js'; // eslint-disable-line
+let counterValue = 0;
+const decBntRef = document.querySelector('[data-action="decrement"]');
+const incBntRef = document.querySelector('[data-action="increment"]');
+const valueRef = document.querySelector('#value');
 
-const getInactiveUsers = users => {
-  const inactiveUser = users.filter(function(user) {
-    return !user.isActive;
-  });
-  return inactiveUser.map(user => user.name);
-};
+decBntRef.addEventListener('click', () => {
+  counterValue -= 1;
+  valueRef.textContent = counterValue;
+});
 
-console.log(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
+incBntRef.addEventListener('click', () => {
+  counterValue += 1;
+  valueRef.textContent = counterValue;
+});
