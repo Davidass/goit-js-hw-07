@@ -1,14 +1,8 @@
-import users from './users.js'; // eslint-disable-line
+const inputRef = document.querySelector('#name-input');
+const nameOutRef = document.querySelector('#name-output');
 
-//Получить пользоваля (не массив) по email (поле email, он уникальный).
-
-const getUserWithEmail = (users, email) => {
-  const userEmail = users.find(function(user) {
-    return user.email === email;
-  });
-
-  return userEmail;
-};
-
-console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
-console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
+inputRef.addEventListener('input', event => {
+  nameOutRef.textContent =
+    event.target.value === '' ? 'незнакомец' : event.target.value;
+});
+// console.log(nameOutRef.textContent);
