@@ -1,10 +1,20 @@
-import users from './users.js'; // eslint-disable-line
+const inputRef = document.querySelector('input[id="validation-input"]');
 
-const calculateTotalBalance = users => {
-  const userBalance = users.reduce(function(totalBalance, user) {
-    return totalBalance + user.balance;
-  }, 0);
-  return userBalance;
-};
+inputRef.addEventListener('focus', onFocus);
+inputRef.addEventListener('blur', onblur);
 
-console.log(calculateTotalBalance(users)); // 20916
+function onFocus(event) {
+  inputRef.classList.remove('valid', 'invalid');
+}
+
+function onblur(event) {
+  if (event.target.value.length === Number(event.target.dataset.length)) {
+    inputRef.classList.add('valid');
+    return;
+  }
+  if (event.target.value.length === 0) {
+    return onFocus();
+  }
+  inputRef.classList.add('invalid');
+  return;
+}

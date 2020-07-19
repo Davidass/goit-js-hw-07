@@ -1,15 +1,16 @@
-import users from './users.js'; // eslint-disable-line
+const testInputRef = document.querySelector('#validation-input');
+// console.dir(testInputRef);
 
-// Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age).
+testInputRef.addEventListener('focus', onInputFocus);
+testInputRef.addEventListener('blur', onInputBlur);
 
-const getUsersWithAge = (users, min, max) => {
-  const userAge = users.filter(function(user) {
-    return user.age >= min && user.age <= max;
-  });
-  return userAge;
-};
-
-console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
-
-console.log(getUsersWithAge(users, 30, 40));
-// [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
+function onInputBlur(event) {
+  const validLengthRef = Number(testInputRef.getAttribute('data-length'));
+  const valueInputRef = event.target.value;
+  return valueInputRef.length === validLengthRef
+    ? testInputRef.classList.add('valid')
+    : testInputRef.classList.add('invalid');
+}
+function onInputFocus() {
+  testInputRef.classList.remove('valid', 'invalid');
+}

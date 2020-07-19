@@ -50,3 +50,15 @@ body {
   transition: transform 250ms cubic-bezier(0.95, 0.01, 0.07, 0.53);
   transform: scale(1.05);
 }
+
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}
