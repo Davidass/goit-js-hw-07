@@ -35,18 +35,14 @@ body {
   list-style: none;
 }
 
-.gallery-items {
+.gallery-list__item {
   margin-right: 20px;
   border-radius: 15px;
   overflow: hidden;
 }
 
-.gallery-items:last-child {
-  margin-right: 0;
-}
-
-.gallery-items:hover,
-.gallery-items:focus {
+.gallery-list__item:hover,
+.gallery-list__item:focus {
   transition: transform 250ms cubic-bezier(0.95, 0.01, 0.07, 0.53);
   transform: scale(1.05);
 }

@@ -1,9 +1,11 @@
-// Напиши скрипт для создания галлереи изображений по массиву данных.
-// В HTML есть список ul#gallery.
-// Используй массив объектов images для создания тегов img вложенных в li.
-// Для создания разметки используй шаблонные строки и insertAdjacentHTML().
-// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
-// Добавь минимальное оформление галереи флексбоксами или гридами через css-классы.
+/* Taks 3
+ Напиши скрипт для создания галлереи изображений по массиву данных.
+ В HTML есть список ul#gallery.
+ Используй массив объектов images для создания тегов img вложенных в li.
+ Для создания разметки используй шаблонные строки и insertAdjacentHTML().
+ Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+ Добавь минимальное оформление галереи флексбоксами или гридами через css-классы. 
+ */
 
 const images = [
   {
@@ -22,25 +24,23 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-
-const createGalleryRef = image => {
-  const listItemRef = document.createElement('li');
-  listItemRef.classList.add('gallery-items');
-  // console.log(listItemRef);
-  const imgRef = document.createElement('img');
-  imgRef.setAttribute('src', image.url);
-  imgRef.setAttribute('alt', image.alt);
-  imgRef.setAttribute('width', '360px');
-  imgRef.setAttribute('height', '240px');
-  listItemRef.append(imgRef);
-
-  return listItemRef;
-};
-
-const galleryGards = images.map(image => createGalleryRef(image));
-// console.log(galleryGards);
-
 const galleryListRef = document.querySelector('#gallery');
 console.log(galleryListRef);
+galleryListRef.classList.add('gallery-list');
 
-galleryListRef.append(...galleryGards);
+function createGallery(arr) {
+  const galleryGards = arr.map(image => {
+    const listItemRef = document.createElement('li');
+    listItemRef.insertAdjacentHTML(
+      'beforeend',
+      ` <img src = "${image.url}" alt = "${image.alt}" "width = "360" height="240">`,
+    );
+    listItemRef.setAttribute('class', 'gallery-list__item');
+
+    return listItemRef;
+  });
+
+  return galleryListRef.append(...galleryGards);
+}
+
+console.log(createGallery(images));
