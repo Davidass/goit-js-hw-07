@@ -22,14 +22,16 @@ function getRandomInt() {
 }
 
 function createBoxes(amount) {
+  const newBoxs = [];
   for (let i = 0; i < amount; i += 1) {
     const size = 30 + i * 10;
     const boxesRef = document.createElement('div');
     boxesRef.style.backgroundColor = getRandomInt();
     boxesRef.style.width = `${size}px`;
     boxesRef.style.height = `${size}px`;
-    refs.boxesAmount.append(boxesRef);
+    newBoxs.push(boxesRef);
   }
+  refs.boxesAmount.append(...newBoxs);
 }
 
 function destroyBoxes() {
